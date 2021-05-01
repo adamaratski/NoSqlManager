@@ -1,0 +1,2 @@
+# RedisManager
+Redis
