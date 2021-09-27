@@ -1,0 +1,53 @@
+﻿<Window x:Class="NoSqlManager.Views.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="Redis Manager" Height="600" Width="1000" TextOptions.TextFormattingMode="Display" FontSize="14" Icon="/app.ico">
+    <DockPanel x:Name="LayoutRoot" LastChildFill="True" Margin="4">
+        <Border DockPanel.Dock="Left" BorderThickness="1" BorderBrush="DarkGray" >
+            <ContentControl x:Name="NavigationRegion" prism:RegionManager.RegionName="NavigationRegion" />
+        </Border>
+        <ContentControl x:Name="WorkspaceRegion" prism:RegionManager.RegionName="WorkspaceRegion" />
+        <!--<TabControl BorderThickness="1" BorderBrush="DarkGray" >
+            <TabItem Header="12"/>
+            <TabItem Header="12"/>
+        </TabControl>-->
+    </DockPanel>
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="True">
+            <ToolBar DockPanel.Dock="Top" ToolBarTray.IsLocked="True">
+                <Button>
+                    <StackPanel Orientation="Horizontal" ToolTip="Add connection">
+                        <Image Width="24" Height="24" Source="/Images/32/database_add.png"/>
+                    </StackPanel>
+                </Button>
+                <Button>
+                    <StackPanel Orientation="Horizontal" ToolTip="Remove connection">
+                        <Image Width="24" Height="24" Source="/Images/32/database_delete.png"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+            --><!--<ListBox></ListBox>--><!--
+        </DockPanel>
+
+        <TabControl>
+            
+        </TabControl>
+        --><!--<ListBox Grid.Row="3" Grid.Column="0"></ListBox>--><!--
+        <DataGrid Grid.Row="0" Grid.Column="2"/>
+    </Grid>-->
+</Window>

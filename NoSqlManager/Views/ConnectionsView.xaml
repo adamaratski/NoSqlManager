@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="NoSqlManager.Views.ConnectionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NoSqlManager.Views"
+             xmlns:models="clr-namespace:NoSqlManager.Infrastructure.Models;assembly=NoSqlManager.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/" xmlns:viewmodels="clr-namespace:NoSqlManager.ViewModels" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="400" Width="300" d:DataContext="{d:DesignInstance viewmodels:ConnectionsViewModel}"> 
+    <DockPanel  LastChildFill="True" >
+        <ToolBarPanel DockPanel.Dock="Top" Orientation="Horizontal" ToolBarTray.IsLocked="True" Background="LightGray" Cursor="Hand">
+            <Button Command="{Binding AddConnectionCommand}" CommandParameter="{x:Static models:ConnectionType.Redis}">
+                <StackPanel Orientation="Horizontal" ToolTip="Add connection">
+                    <Image Width="32" Height="32" Source="/NoSqlManager;component/Images/32/database_add.png"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding DeleteConnectionCommand}" CommandParameter="{Binding SelectedConnection}" Cursor="Hand">
+                <StackPanel Orientation="Horizontal" ToolTip="Remove connection">
+                    <Image Width="32" Height="32" Source="/NoSqlManager;component/Images/32/database_delete.png"/>
+                </StackPanel>
+            </Button>
+            <Separator Margin="3, 0"/>
+            <Button Command="{Binding ConnectCommand}" CommandParameter="{Binding SelectedConnection}" Cursor="Hand">
+                <StackPanel Orientation="Horizontal" ToolTip="Connect">
+                    <Image Width="32" Height="32" Source="/NoSqlManager;component/Images/32/database_connect.png"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding DisconnectCommand}" CommandParameter="{Binding SelectedConnection}" Cursor="Hand">
+                <StackPanel Orientation="Horizontal" ToolTip="Connect">
+                    <Image Width="32" Height="32" Source="/NoSqlManager;component/Images/32/disconnect.png"/>
+                </StackPanel>
+            </Button>
+        </ToolBarPanel>
+        <ListBox ItemsSource="{Binding Connections}" SelectedItem="{Binding SelectedConnection}" IsSynchronizedWithCurrentItem="True" DockPanel.Dock="Top" Height="200" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding EditConnectionCommand}" CommandParameter="{Binding SelectedConnection}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DataGrid>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Key" MinWidth="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Value" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

@@ -1,2 +1,2 @@
-# RedisManager
+# NoSqlManager
 Redis
